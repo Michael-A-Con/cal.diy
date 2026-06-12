@@ -98,44 +98,49 @@ export async function getLocationGroupedOptions(
     credentials = buildNonDelegationCredentials(nonDelegationCredentials);
   }
 
-  const integrations = await getEnabledAppsFromCredentials(credentials, { filterOnCredentials: true });
+  // [ceibafy] integrations unused while video location options are hidden — restore with the block below
+  // const integrations = await getEnabledAppsFromCredentials(credentials, { filterOnCredentials: true });
 
-  integrations.forEach((app) => {
-    // All apps that are labeled as a locationOption are video apps.
-    if (app.locationOption) {
-      // All apps that are labeled as a locationOption are video apps. Extract the secondary category if available
-      let groupByCategory =
-        app.categories.length >= 2
-          ? app.categories.find((groupByCategory) => !defaultVideoAppCategories.includes(groupByCategory))
-          : app.categories[0] || app.category;
-      if (!groupByCategory) groupByCategory = AppCategories.conferencing;
+  // [ceibafy] Third-party video/conferencing location options hidden — remove comment block to re-enable
+  // integrations.forEach((app) => {
+  //   // All apps that are labeled as a locationOption are video apps.
+  //   if (app.locationOption) {
+  //     // All apps that are labeled as a locationOption are video apps. Extract the secondary category if available
+  //     let groupByCategory =
+  //       app.categories.length >= 2
+  //         ? app.categories.find((groupByCategory) => !defaultVideoAppCategories.includes(groupByCategory))
+  //         : app.categories[0] || app.category;
+  //     if (!groupByCategory) groupByCategory = AppCategories.conferencing;
+  //
+  //     for (const { teamName } of app.credentials.map((credential) => ({
+  //       teamName: credential.team?.name,
+  //     }))) {
+  //       const label = `${app.locationOption.label} ${teamName ? `(${teamName})` : ""}`;
+  //       const option = {
+  //         ...app.locationOption,
+  //         label,
+  //         icon: app.logo,
+  //         slug: app.slug,
+  //         ...(app.credential
+  //           ? { credentialId: app.credential.id, teamName: app.credential.team?.name ?? null }
+  //           : {}),
+  //       };
+  //       if (apps[groupByCategory]) {
+  //         const existingOption = apps[groupByCategory].find((o) => o.value === option.value);
+  //         if (!existingOption) {
+  //           apps[groupByCategory] = [...apps[groupByCategory], option];
+  //         }
+  //       } else {
+  //         apps[groupByCategory] = [option];
+  //       }
+  //     }
+  //   }
+  // });
 
-      for (const { teamName } of app.credentials.map((credential) => ({
-        teamName: credential.team?.name,
-      }))) {
-        const label = `${app.locationOption.label} ${teamName ? `(${teamName})` : ""}`;
-        const option = {
-          ...app.locationOption,
-          label,
-          icon: app.logo,
-          slug: app.slug,
-          ...(app.credential
-            ? { credentialId: app.credential.id, teamName: app.credential.team?.name ?? null }
-            : {}),
-        };
-        if (apps[groupByCategory]) {
-          const existingOption = apps[groupByCategory].find((o) => o.value === option.value);
-          if (!existingOption) {
-            apps[groupByCategory] = [...apps[groupByCategory], option];
-          }
-        } else {
-          apps[groupByCategory] = [option];
-        }
-      }
-    }
-  });
+  // [ceibafy] Only show In Person and Phone locations; remove filter to re-enable all default locations
+  const allowedLocationCategories = new Set(["in_person_category", "phone"]);
 
-  defaultLocations.forEach((l) => {
+  defaultLocations.filter((l) => allowedLocationCategories.has(l.category)).forEach((l) => {
     const category = l.category;
     if (apps[category]) {
       apps[category] = [

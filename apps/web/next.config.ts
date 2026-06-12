@@ -499,7 +499,24 @@ const nextConfig = (phase: string): NextConfig => {
       ].filter(isNotNull);
     },
     async redirects() {
+      // [ceibafy] /apps route blocked — flip `false` to `true` to re-enable the App Store routes
+      const CEIBAFY_HIDE_APP_STORE = true;
+
       const redirects = [
+        ...(CEIBAFY_HIDE_APP_STORE
+          ? [
+              {
+                source: "/apps",
+                destination: "/event-types",
+                permanent: false,
+              },
+              {
+                source: "/apps/:path*",
+                destination: "/event-types",
+                permanent: false,
+              },
+            ]
+          : []),
         {
           source: "/settings/organizations",
           destination: "/settings/organizations/profile",

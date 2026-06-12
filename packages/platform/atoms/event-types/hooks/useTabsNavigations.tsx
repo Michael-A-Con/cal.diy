@@ -40,15 +40,17 @@ export const useTabsNavigations = ({
   const isManagedEventType = eventType.schedulingType === "MANAGED";
   const isChildrenManagedEventType = false;
 
-  let enabledAppsNumber = 0;
+  // [ceibafy] Unused while Apps tab is hidden — uncomment with the Apps tab
+  // let enabledAppsNumber = 0;
+  // if (appsMetadata) {
+  //   enabledAppsNumber = Object.entries(appsMetadata).filter(
+  //     ([appId, appData]) =>
+  //       eventTypeApps?.items.find((app) => app.slug === appId)?.isInstalled &&
+  //       (appData as { enabled?: boolean } | undefined)?.enabled
+  //   ).length;
+  // }
+  const enabledAppsNumber = 0;
 
-  if (appsMetadata) {
-    enabledAppsNumber = Object.entries(appsMetadata).filter(
-      ([appId, appData]) =>
-        eventTypeApps?.items.find((app) => app.slug === appId)?.isInstalled &&
-        (appData as { enabled?: boolean } | undefined)?.enabled
-    ).length;
-  }
   const paymentAppData = getPaymentAppData({
     ...eventType,
     metadata: eventTypeMetaDataSchemaWithTypedApps.parse(eventType.metadata),
@@ -58,7 +60,9 @@ export const useTabsNavigations = ({
 
   const activeWebhooksNumber = eventType.webhooks.filter((webhook) => webhook.active).length;
 
-  const installedAppsNumber = eventTypeApps?.items.filter((app) => app.isInstalled).length || 0;
+  // [ceibafy] Unused while Apps tab is hidden — uncomment with the Apps tab
+  // const installedAppsNumber = eventTypeApps?.items.filter((app) => app.isInstalled).length || 0;
+  const installedAppsNumber = 0;
 
   const eventTypeId = formMethods.getValues("id");
 
@@ -196,13 +200,14 @@ function getNavigation({
       info: t(`event_advanced_tab_description`),
       "data-testid": "event_advanced_tab_title",
     },
-    {
-      name: t("apps"),
-      href: `/event-types/${id}?tabName=apps`,
-      icon: "grid-3x3",
-      info: `${t("number_apps", { count: installedAppsNumber })}, ${enabledAppsNumber} ${t("active")}`,
-      "data-testid": "apps",
-    },
+    // [ceibafy] Apps tab hidden — uncomment to re-enable
+    // {
+    //   name: t("apps"),
+    //   href: `/event-types/${id}?tabName=apps`,
+    //   icon: "grid-3x3",
+    //   info: `${t("number_apps", { count: installedAppsNumber })}, ${enabledAppsNumber} ${t("active")}`,
+    //   "data-testid": "apps",
+    // },
   ];
 
   return baseNavigation;
