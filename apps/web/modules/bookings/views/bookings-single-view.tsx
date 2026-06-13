@@ -679,7 +679,8 @@ export default function Success(props: PageProps) {
                             </div>
                           </>
                         )}
-                        {locationToDisplay && !isCancelled && (
+                        {/* [ceibafy] Video conferencing join link on booking page hidden — uncomment to re-enable */}
+                        {/* {locationToDisplay && !isCancelled && (
                           <>
                             <div className="mt-3 font-medium">{t("where")}</div>
                             <div className="col-span-2 mt-3" data-testid="where">
@@ -706,7 +707,7 @@ export default function Success(props: PageProps) {
                               )}
                             </div>
                           </>
-                        )}
+                        )} */}
                         {props.paymentStatus && (
                           <>
                             <div className="mt-3 font-medium">

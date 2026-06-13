@@ -415,7 +415,8 @@ const Locations: React.FC<LocationsProps> = ({
           </li>
         )}
       </ul>
-      {props.showAppStoreLink && !isPlatform && (
+      {/* [ceibafy] "Can't find conferencing app" App Store link hidden — uncomment to re-enable */}
+      {/* {props.showAppStoreLink && !isPlatform && (
         <p className="text-default mt-2 text-sm">
           <ServerTrans
             t={t}
@@ -430,7 +431,7 @@ const Locations: React.FC<LocationsProps> = ({
             ]}
           />
         </p>
-      )}
+      )} */}
     </div>
   );
 };

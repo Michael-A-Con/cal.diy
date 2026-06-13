@@ -306,7 +306,8 @@ function BookingListItem(booking: BookingItemProps) {
                     attendees={booking.attendees}
                   />
                 </div>
-                {!isPending && (
+                {/* [ceibafy] Video conferencing join link hidden — uncomment to re-enable */}
+                {/* {!isPending && (
                   <div>
                     {(provider?.label ||
                       (typeof locationToDisplay === "string" && locationToDisplay?.startsWith("https://"))) &&
@@ -336,7 +337,7 @@ function BookingListItem(booking: BookingItemProps) {
                         </a>
                       )}
                   </div>
-                )}
+                )} */}
               </div>
             </ConditionalLink>
           </div>
