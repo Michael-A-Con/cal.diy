@@ -511,12 +511,29 @@ const nextConfig = (phase: string): NextConfig => {
       // [ceibafy] /settings/developer (API keys + developer landing) blocked — flip to `false` to re-enable
       const CEIBAFY_HIDE_API_ACCESS = true;
 
+      // [ceibafy] Workflows not present in this fork; defensive guard in case a future route appears — flip to `false` to re-enable
+      const CEIBAFY_HIDE_WORKFLOWS = true;
+
       // [ceibafy] Payments tab hidden — note: Next.js redirects don't match query strings so
       // ?tabName=payments cannot be redirected here; the tab renders empty since tabMap has no
       // payments key. Flag kept for documentation purposes.
       // const CEIBAFY_HIDE_PAYMENTS = true;
 
       const redirects = [
+        ...(CEIBAFY_HIDE_WORKFLOWS
+          ? [
+              {
+                source: "/workflows",
+                destination: "/event-types",
+                permanent: false,
+              },
+              {
+                source: "/workflows/:path*",
+                destination: "/event-types",
+                permanent: false,
+              },
+            ]
+          : []),
         ...(CEIBAFY_HIDE_API_ACCESS
           ? [
               {
