@@ -1,12 +1,15 @@
-import { getPaymentAppData } from "@calcom/app-store/_utils/payments/getPaymentAppData";
+// [ceibafy] Unused while price block is hidden — uncomment to re-enable
+// import { getPaymentAppData } from "@calcom/app-store/_utils/payments/getPaymentAppData";
 import { useBookerStore } from "@calcom/features/bookings/Booker/store";
-import { Price } from "@calcom/features/bookings/components/event-meta/Price";
+// [ceibafy] Unused while price block is hidden — uncomment to re-enable
+// import { Price } from "@calcom/features/bookings/components/event-meta/Price";
 import type { BookerEvent } from "@calcom/features/bookings/types";
 import { EventDetailBlocks } from "@calcom/features/bookings/types";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import classNames from "@calcom/ui/classNames";
 import { Icon, type IconName } from "@calcom/ui/components/icon";
-import { PriceIcon } from "@calcom/web/modules/bookings/components/event-meta/PriceIcon";
+// [ceibafy] Unused while price block is hidden — uncomment to re-enable
+// import { PriceIcon } from "@calcom/web/modules/bookings/components/event-meta/PriceIcon";
 import React, { Fragment } from "react";
 import { AvailableEventLocations } from "./AvailableEventLocations";
 import { EventDuration } from "./Duration";
@@ -173,26 +176,28 @@ export const EventDetails = ({ event, blocks = defaultEventDetailsBlocks }: Even
               </EventMetaBlock>
             );
 
+          // [ceibafy] Price block on public booking page hidden — uncomment to re-enable
+          // case EventDetailBlocks.PRICE: {
+          //   const paymentAppData = getPaymentAppData(event);
+          //   if (event.price <= 0 || paymentAppData.price <= 0) return null;
+          //   return (
+          //     <EventMetaBlock
+          //       key={block}
+          //       customIcon={
+          //         <PriceIcon
+          //           className="relative z-20 mr-2 mt-[2px] h-4 w-4 shrink-0 rtl:ml-2"
+          //           currency={event.currency}
+          //         />
+          //       }>
+          //       <Price
+          //         price={paymentAppData.price}
+          //         currency={event.currency}
+          //         displayAlternateSymbol={false}
+          //       />
+          //     </EventMetaBlock>
+          //   );
           case EventDetailBlocks.PRICE: {
-            const paymentAppData = getPaymentAppData(event);
-            if (event.price <= 0 || paymentAppData.price <= 0) return null;
-
-            return (
-              <EventMetaBlock
-                key={block}
-                customIcon={
-                  <PriceIcon
-                    className="relative z-20 mr-2 mt-[2px] h-4 w-4 shrink-0 rtl:ml-2"
-                    currency={event.currency}
-                  />
-                }>
-                <Price
-                  price={paymentAppData.price}
-                  currency={event.currency}
-                  displayAlternateSymbol={false}
-                />
-              </EventMetaBlock>
-            );
+            return null;
           }
         }
       })}

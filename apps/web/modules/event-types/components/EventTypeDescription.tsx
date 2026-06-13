@@ -97,7 +97,8 @@ export const EventTypeDescription = ({
               </Badge>
             </li>
           )}
-          {paymentAppData.enabled && (
+          {/* [ceibafy] Payment price badge hidden — uncomment to re-enable */}
+          {/* {paymentAppData.enabled && (
             <li>
               <Badge
                 variant="gray"
@@ -111,7 +112,7 @@ export const EventTypeDescription = ({
                 />
               </Badge>
             </li>
-          )}
+          )} */}
           {eventType.requiresConfirmation && (
             <li className="hidden xl:block" data-testid="requires-confirmation-badge">
               <Badge variant="gray" startIcon="clipboard">

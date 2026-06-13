@@ -1,7 +1,8 @@
 "use client";
 
-import { getPaymentAppData } from "@calcom/app-store/_utils/payments/getPaymentAppData";
-import { eventTypeMetaDataSchemaWithTypedApps } from "@calcom/app-store/zod-utils";
+// [ceibafy] Unused while Payments tab is hidden — uncomment to re-enable
+// import { getPaymentAppData } from "@calcom/app-store/_utils/payments/getPaymentAppData";
+// import { eventTypeMetaDataSchemaWithTypedApps } from "@calcom/app-store/zod-utils";
 import type {
   AvailabilityOption,
   EventTypeApps,
@@ -51,12 +52,13 @@ export const useTabsNavigations = ({
   // }
   const enabledAppsNumber = 0;
 
-  const paymentAppData = getPaymentAppData({
-    ...eventType,
-    metadata: eventTypeMetaDataSchemaWithTypedApps.parse(eventType.metadata),
-  });
-
-  const requirePayment = paymentAppData.price > 0;
+  // [ceibafy] Payment data unused while Payments tab is hidden — uncomment to re-enable
+  // const paymentAppData = getPaymentAppData({
+  //   ...eventType,
+  //   metadata: eventTypeMetaDataSchemaWithTypedApps.parse(eventType.metadata),
+  // });
+  // const requirePayment = paymentAppData.price > 0;
+  const requirePayment = false;
 
   // [ceibafy] Unused while Webhooks tab is hidden — uncomment with the Webhooks tab below
   // const activeWebhooksNumber = eventType.webhooks.filter((webhook) => webhook.active).length;
@@ -79,15 +81,16 @@ export const useTabsNavigations = ({
       availability,
     });
 
-    if (!requirePayment) {
-      navigation.splice(3, 0, {
-        name: t("recurring"),
-        href: `/event-types/${eventTypeId}?tabName=recurring`,
-        icon: "repeat",
-        info: t(`recurring_event_tab_description`),
-        "data-testid": "recurring",
-      });
-    }
+    // [ceibafy] requirePayment always false (payments hidden), so recurring tab always shown
+    // if (!requirePayment) {
+    navigation.splice(3, 0, {
+      name: t("recurring"),
+      href: `/event-types/${eventTypeId}?tabName=recurring`,
+      icon: "repeat",
+      info: t(`recurring_event_tab_description`),
+      "data-testid": "recurring",
+    });
+    // }
     navigation.splice(1, 0, {
       name: t("availability"),
       href: `/event-types/${eventTypeId}?tabName=availability`,

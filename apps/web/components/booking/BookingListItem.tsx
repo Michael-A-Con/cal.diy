@@ -373,11 +373,12 @@ function BookingListItem(booking: BookingItemProps) {
                   {booking.eventType.team.name}
                 </Badge>
               )}
-              {showPendingPayment && (
+              {/* [ceibafy] Pending payment badge (mobile) hidden — uncomment to re-enable */}
+              {/* {showPendingPayment && (
                 <Badge className="ltr:mr-2 rtl:ml-2 sm:hidden" variant="orange">
                   {t("pending_payment")}
                 </Badge>
-              )}
+              )} */}
               {isRescheduled && (
                 <Tooltip content={`${t("rescheduled_by")} ${booking.rescheduler}`}>
                   <Badge variant="orange" className="ltr:mr-2 rtl:ml-2 sm:hidden">
@@ -407,11 +408,12 @@ function BookingListItem(booking: BookingItemProps) {
                 {title}
                 <span> </span>
 
-                {showPendingPayment && (
+                {/* [ceibafy] Pending payment badge (desktop) hidden — uncomment to re-enable */}
+                {/* {showPendingPayment && (
                   <Badge className="hidden sm:inline-flex" variant="orange">
                     {t("pending_payment")}
                   </Badge>
-                )}
+                )} */}
               </div>
               {booking.description && (
                 <div
@@ -613,7 +615,8 @@ const BookingItemBadges = ({
           </Badge>
         </Tooltip>
       )}
-      {booking.paid && !booking.payment[0] ? (
+      {/* [ceibafy] Paid / Card held / Error collecting card badges hidden — uncomment to re-enable */}
+      {/* {booking.paid && !booking.payment[0] ? (
         <Badge className="ltr:mr-2 rtl:ml-2" variant="orange">
           {t("error_collecting_card")}
         </Badge>
@@ -621,7 +624,7 @@ const BookingItemBadges = ({
         <Badge className="ltr:mr-2 rtl:ml-2" variant="green" data-testid="paid_badge">
           {booking.payment[0].paymentOption === "HOLD" ? t("card_held") : t("paid")}
         </Badge>
-      ) : null}
+      ) : null} */}
       {recurringDates !== undefined && (
         <div className="text-muted -mt-1 text-sm">
           <RecurringBookingsTooltip

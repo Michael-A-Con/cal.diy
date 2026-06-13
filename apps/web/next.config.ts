@@ -508,6 +508,11 @@ const nextConfig = (phase: string): NextConfig => {
       // [ceibafy] /settings/my-account/conferencing blocked — flip to `false` to re-enable
       const CEIBAFY_HIDE_CONFERENCING = true;
 
+      // [ceibafy] Payments tab hidden — note: Next.js redirects don't match query strings so
+      // ?tabName=payments cannot be redirected here; the tab renders empty since tabMap has no
+      // payments key. Flag kept for documentation purposes.
+      // const CEIBAFY_HIDE_PAYMENTS = true;
+
       const redirects = [
         ...(CEIBAFY_HIDE_CONFERENCING
           ? [

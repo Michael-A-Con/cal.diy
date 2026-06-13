@@ -708,7 +708,8 @@ export default function Success(props: PageProps) {
                             </div>
                           </>
                         )} */}
-                        {props.paymentStatus && (
+                        {/* [ceibafy] Payment amount block on booking page hidden — uncomment to re-enable */}
+                        {/* {props.paymentStatus && (
                           <>
                             <div className="mt-3 font-medium">
                               {props.paymentStatus.paymentOption === "HOLD"
@@ -722,7 +723,7 @@ export default function Success(props: PageProps) {
                               />
                             </div>
                           </>
-                        )}
+                        )} */}
 
                         {rescheduledToUid ? <RescheduledToLink rescheduledToUid={rescheduledToUid} /> : null}
 
