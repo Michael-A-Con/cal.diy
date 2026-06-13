@@ -58,7 +58,9 @@ export const useTabsNavigations = ({
 
   const requirePayment = paymentAppData.price > 0;
 
-  const activeWebhooksNumber = eventType.webhooks.filter((webhook) => webhook.active).length;
+  // [ceibafy] Unused while Webhooks tab is hidden — uncomment with the Webhooks tab below
+  // const activeWebhooksNumber = eventType.webhooks.filter((webhook) => webhook.active).length;
+  const activeWebhooksNumber = 0;
 
   // [ceibafy] Unused while Apps tab is hidden — uncomment with the Apps tab
   // const installedAppsNumber = eventTypeApps?.items.filter((app) => app.isInstalled).length || 0;
@@ -128,13 +130,14 @@ export const useTabsNavigations = ({
         });
       }
     }
-    navigation.push({
-      name: t("webhooks"),
-      href: `/event-types/${eventTypeId}?tabName=webhooks`,
-      icon: "webhook",
-      info: `${activeWebhooksNumber} ${t("active")}`,
-      "data-testid": "webhooks",
-    });
+    // [ceibafy] Webhooks tab hidden — uncomment to re-enable (also restore activeWebhooksNumber above)
+    // navigation.push({
+    //   name: t("webhooks"),
+    //   href: `/event-types/${eventTypeId}?tabName=webhooks`,
+    //   icon: "webhook",
+    //   info: `${activeWebhooksNumber} ${t("active")}`,
+    //   "data-testid": "webhooks",
+    // });
     return navigation;
   }, [
     t,

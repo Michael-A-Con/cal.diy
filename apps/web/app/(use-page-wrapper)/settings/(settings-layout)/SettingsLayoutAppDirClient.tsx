@@ -56,11 +56,12 @@ const getTabs = (
           href: "/settings/my-account/calendars",
           trackingMetadata: { section: "my_account", page: "calendars" },
         },
-        {
-          name: "conferencing",
-          href: "/settings/my-account/conferencing",
-          trackingMetadata: { section: "my_account", page: "conferencing" },
-        },
+        // [ceibafy] Conferencing settings hidden — uncomment to re-enable
+        // {
+        //   name: "conferencing",
+        //   href: "/settings/my-account/conferencing",
+        //   trackingMetadata: { section: "my_account", page: "conferencing" },
+        // },
         {
           name: "appearance",
           href: "/settings/my-account/appearance",
@@ -97,36 +98,37 @@ const getTabs = (
         },
       ],
     },
-    {
-      name: "developer",
-      href: "/settings/developer",
-      icon: "terminal",
-      children: [
-        //
-        {
-          name: "webhooks",
-          href: "/settings/developer/webhooks",
-          trackingMetadata: { section: "developer", page: "webhooks" },
-        },
-        {
-          name: "oAuth",
-          href: "/settings/developer/oauth",
-          trackingMetadata: { section: "developer", page: "oauth_clients" },
-        },
-        {
-          name: "api_keys",
-          href: "/settings/developer/api-keys",
-          trackingMetadata: { section: "developer", page: "api_keys" },
-        },
-        {
-          name: "api_docs",
-          href: "/docs",
-          trackingMetadata: { section: "developer", page: "api_docs" },
-        },
-        // TODO: Add profile level for embeds
-        // { name: "embeds", href: "/v2/settings/developer/embeds" },
-      ],
-    },
+    // [ceibafy] Entire Developer section hidden — uncomment to re-enable (webhooks, oAuth, API keys, API docs)
+    // {
+    //   name: "developer",
+    //   href: "/settings/developer",
+    //   icon: "terminal",
+    //   children: [
+    //     // [ceibafy] Webhooks hidden — uncomment to re-enable
+    //     // {
+    //     //   name: "webhooks",
+    //     //   href: "/settings/developer/webhooks",
+    //     //   trackingMetadata: { section: "developer", page: "webhooks" },
+    //     // },
+    //     {
+    //       name: "oAuth",
+    //       href: "/settings/developer/oauth",
+    //       trackingMetadata: { section: "developer", page: "oauth_clients" },
+    //     },
+    //     {
+    //       name: "api_keys",
+    //       href: "/settings/developer/api-keys",
+    //       trackingMetadata: { section: "developer", page: "api_keys" },
+    //     },
+    //     {
+    //       name: "api_docs",
+    //       href: "/docs",
+    //       trackingMetadata: { section: "developer", page: "api_docs" },
+    //     },
+    //     // TODO: Add profile level for embeds
+    //     // { name: "embeds", href: "/v2/settings/developer/embeds" },
+    //   ],
+    // },
     {
       name: "organization",
       href: "/settings/organizations",

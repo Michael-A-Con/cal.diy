@@ -499,10 +499,39 @@ const nextConfig = (phase: string): NextConfig => {
       ].filter(isNotNull);
     },
     async redirects() {
-      // [ceibafy] /apps route blocked — flip `false` to `true` to re-enable the App Store routes
+      // [ceibafy] /apps route blocked — flip to `false` to re-enable the App Store routes
       const CEIBAFY_HIDE_APP_STORE = true;
 
+      // [ceibafy] /settings/developer/webhooks blocked — flip to `false` to re-enable
+      const CEIBAFY_HIDE_WEBHOOKS = true;
+
+      // [ceibafy] /settings/my-account/conferencing blocked — flip to `false` to re-enable
+      const CEIBAFY_HIDE_CONFERENCING = true;
+
       const redirects = [
+        ...(CEIBAFY_HIDE_CONFERENCING
+          ? [
+              {
+                source: "/settings/my-account/conferencing",
+                destination: "/settings/my-account/profile",
+                permanent: false,
+              },
+            ]
+          : []),
+        ...(CEIBAFY_HIDE_WEBHOOKS
+          ? [
+              {
+                source: "/settings/developer/webhooks",
+                destination: "/event-types",
+                permanent: false,
+              },
+              {
+                source: "/settings/developer/webhooks/:path*",
+                destination: "/event-types",
+                permanent: false,
+              },
+            ]
+          : []),
         ...(CEIBAFY_HIDE_APP_STORE
           ? [
               {
