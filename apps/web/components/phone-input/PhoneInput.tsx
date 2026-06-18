@@ -31,7 +31,8 @@ function BasePhoneInput({
   className = "",
   onChange,
   value,
-  defaultCountry = "us",
+  // [looknbook] default country Costa Rica (was "us")
+  defaultCountry = "cr",
   ...rest
 }: PhoneInputProps) {
   const isPlatform = useIsPlatform();
@@ -157,7 +158,8 @@ function BasePhoneInputWeb({
 
 const useDefaultCountry = () => {
   const defaultPhoneCountryFromStore = useBookerStore((state) => state.defaultPhoneCountry);
-  const [defaultCountry, setDefaultCountry] = useState<CountryCode>(defaultPhoneCountryFromStore || "us");
+  // [looknbook] default country Costa Rica (was "us"); geo-IP/navigator still override for tourists
+  const [defaultCountry, setDefaultCountry] = useState<CountryCode>(defaultPhoneCountryFromStore || "cr");
   const query = trpc.viewer.public.countryCode.useQuery(undefined, {
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
@@ -183,7 +185,8 @@ const useDefaultCountry = () => {
         if (navCountry && isSupportedCountry(navCountry)) {
           setDefaultCountry(navCountry.toLowerCase() as CountryCode);
         } else {
-          setDefaultCountry("us");
+          // [looknbook] fallback Costa Rica (was "us")
+          setDefaultCountry("cr");
         }
       }
     },

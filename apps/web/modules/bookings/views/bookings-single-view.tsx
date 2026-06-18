@@ -28,7 +28,8 @@ import { isWithinMinimumRescheduleNotice as isWithinMinimumRescheduleNoticeUtil 
 import type { nameObjectSchema } from "@calcom/features/eventtypes/lib/eventNaming";
 import { getEventName } from "@calcom/features/eventtypes/lib/eventNaming";
 import { shouldShowFieldInCustomResponses } from "@calcom/lib/bookings/SystemField";
-import { APP_NAME } from "@calcom/lib/constants";
+// [ceibafy] APP_NAME unused after confirmation-page branding removal
+// import { APP_NAME } from "@calcom/lib/constants";
 import { formatToLocalizedDate, formatToLocalizedTime, formatToLocalizedTimezone } from "@calcom/lib/dayjs";
 import useGetBrandingColours from "@calcom/lib/getBrandColours";
 import { useCompatSearchParams } from "@calcom/lib/hooks/useCompatSearchParams";
@@ -52,7 +53,8 @@ import { Avatar } from "@calcom/ui/components/avatar";
 import { Badge } from "@calcom/ui/components/badge";
 import { Button } from "@calcom/ui/components/button";
 import { EmptyScreen } from "@calcom/ui/components/empty-screen";
-import { EmailInput, TextArea } from "@calcom/ui/components/form";
+// [ceibafy] EmailInput unused after confirmation-page branding removal (TextArea still used)
+import { TextArea } from "@calcom/ui/components/form";
 import { Icon } from "@calcom/ui/components/icon";
 import {
   CalendarIcon,
@@ -1036,6 +1038,7 @@ export default function Success(props: PageProps) {
                       </>
                     )}
 
+                    {/* [ceibafy] Branding/signup CTA watermark on confirmation page removed (clean removal, no replacement)
                     {session === null && !(userIsOwner || props.hideBranding) && (
                       <>
                         <hr className="border-subtle mt-8" />
@@ -1069,7 +1072,7 @@ export default function Success(props: PageProps) {
                           </form>
                         </div>
                       </>
-                    )}
+                    )} */}
                   </>
                 )}
                 {isFeedbackMode &&

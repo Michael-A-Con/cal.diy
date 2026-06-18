@@ -542,7 +542,7 @@
   "no_status_bookings_yet": "No hay reservas {{status}}",
   "no_status_bookings_yet_description": "No tienes reservas {{status}}. {{description}}",
   "event_between_users": "{{eventName}} entre {{host}} y {{attendeeName}}",
-  "bookings": "Reservas",
+  "bookings": "Reservaciones",
   "booking_not_found": "Reserva no encontrada",
   "bookings_description": "Consulta los eventos próximos y pasados reservados a través de tus enlaces de tipo de evento.",
   "upcoming_bookings": "Tan pronto como alguien reserve un horario contigo, aparecerá aquí.",

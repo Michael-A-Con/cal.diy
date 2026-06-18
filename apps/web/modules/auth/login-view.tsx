@@ -60,7 +60,8 @@ function BackgroundGrid() {
         height={height}
         viewBox={`0 0 ${width} ${height}`}
         fill="none"
-        className="[--grid-fill:#f7f7f7] [--grid-stroke:rgba(34,42,53,0.08)] dark:[--grid-fill:#1f1f1f] dark:[--grid-stroke:rgba(255,255,255,0.08)]">
+        // [ceibafy] grid tinted to looknbook palette (original: fill #f7f7f7 / stroke rgba(34,42,53,0.08))
+        className="[--grid-fill:#E4DFB5] [--grid-stroke:rgba(154,177,122,0.15)] dark:[--grid-fill:#1f1f1f] dark:[--grid-stroke:rgba(255,255,255,0.08)]">
         <defs>
           <radialGradient id="gridFade" cx="50%" cy="50%" rx="70%" ry="70%">
             <stop offset="20%" stopColor="white" stopOpacity="1" />
@@ -175,7 +176,8 @@ export default function Login({
     process.env.NEXT_PUBLIC_DISABLE_SIGNUP !== "true" && searchParams?.get("register") !== "false";
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-default/80 px-4 py-10">
+    // [ceibafy] page background bg-default/80 → bg-warm (cream / dark-green)
+    <div className="relative flex min-h-screen items-center justify-center bg-warm px-4 py-10">
       <BackgroundGrid />
 
       <div className="relative z-10 flex w-full max-w-md flex-col items-center">
@@ -183,12 +185,21 @@ export default function Login({
         <div className="w-full rounded-xl border border-subtle bg-default p-10 shadow-sm">
           {/* Logo */}
           <div className="mb-2 text-center">
-            <h1 className="font-cal text-xl font-bold text-emphasis">Cal.diy</h1>
+            {/* [ceibafy] original brand name */}
+            {/* <h1 className="font-cal text-xl font-bold text-emphasis">Cal.diy</h1> */}
+            <h1 className="font-cal text-xl font-bold text-emphasis">looknbook</h1>
+          </div>
+
+          {/* [ceibafy] Marketing headline + subtext (i18n) */}
+          <div className="mb-8 text-center">
+            <p className="text-base font-semibold text-emphasis">{t("ceibafy_headline")}</p>
+            <p className="text-sm text-subtle">{t("ceibafy_subtext")}</p>
           </div>
 
           {/* Heading */}
+          {/* [ceibafy] original subtitle commented out; restored only for 2FA prompt */}
           <p className="mb-8 text-center text-sm text-subtle" data-testid="login-subtitle">
-            {twoFactorRequired ? t("2fa_code") : t("welcome_back_sign_in")}
+            {twoFactorRequired ? t("2fa_code") : /* [ceibafy] t("welcome_back_sign_in") */ ""}
           </p>
 
           <FormProvider {...methods}>
@@ -235,7 +246,8 @@ export default function Login({
                 {/* Divider */}
                 <div className="my-6 flex items-center gap-4">
                   <Separator className="flex-1" />
-                  <span className="text-sm text-zinc-400">{t("or").toLowerCase()}</span>
+                  {/* [ceibafy] text-zinc-400 → text-subtle (themed) */}
+                  <span className="text-sm text-subtle">{t("or").toLowerCase()}</span>
                   <Separator className="flex-1" />
                 </div>
               </>
@@ -309,9 +321,10 @@ export default function Login({
               {errorMessage && <Alert severity="error" title={errorMessage} className="mt-4" />}
 
               {/* Submit Button */}
+              {/* [ceibafy] variant="outline" → color="primary" for green brand button */}
               <Button
                 type="submit"
-                variant="outline"
+                color="primary"
                 className="mt-8 w-full"
                 disabled={formState.isSubmitting}>
                 {twoFactorRequired ? t("submit") : t("continue")}

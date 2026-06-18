@@ -86,7 +86,8 @@ export const ensureBookingInputsHaveSystemFields = ({
     [EventTypeCustomInputType.PHONE]: BookingFieldTypeEnum.phone,
   };
 
-  const isEmailFieldOptional = !!bookingFields.find((field) => field.name === "email" && !field.required);
+  // [looknbook] unused after making email optional by default (kept for reference)
+  // const isEmailFieldOptional = !!bookingFields.find((field) => field.name === "email" && !field.required);
 
   // These fields should be added before other user fields
   const systemBeforeFields: typeof bookingFields = [
@@ -110,7 +111,9 @@ export const ensureBookingInputsHaveSystemFields = ({
       defaultLabel: "email_address",
       type: "email",
       name: "email",
-      required: !isEmailFieldOptional,
+      // [looknbook] WhatsApp-first: email optional by default (phone is the required identifier).
+      // Original: required: !isEmailFieldOptional
+      required: false,
       editable: "system-but-optional",
       sources: [
         {
@@ -124,8 +127,10 @@ export const ensureBookingInputsHaveSystemFields = ({
       defaultLabel: "phone_number",
       type: "phone",
       name: "attendeePhoneNumber",
-      required: false,
-      hidden: true,
+      // [looknbook] WhatsApp-first: phone required + visible by default (was required:false, hidden:true).
+      // A hidden field can never be required (see getBookingResponsesSchema), so both flags must change.
+      required: true,
+      hidden: false,
       editable: "system-but-optional",
       sources: [
         {

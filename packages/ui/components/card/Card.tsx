@@ -36,7 +36,8 @@ const cvaCardTypeByVariant = cva("", {
     {
       variant: "basic",
       structure: "card",
-      className: "p-5 bg-default",
+      // [ceibafy] bg-default → bg-accent
+      className: "p-5 bg-accent",
     },
     {
       variant: "basic",
@@ -58,7 +59,8 @@ const cvaCardTypeByVariant = cva("", {
     {
       variant: "ProfileCard",
       structure: "card",
-      className: "w-80 p-4 hover:bg-subtle bg-default",
+      // [ceibafy] bg-default → bg-accent
+      className: "w-80 p-4 hover:bg-subtle bg-accent",
     },
     {
       variant: "ProfileCard",
@@ -80,7 +82,8 @@ const cvaCardTypeByVariant = cva("", {
     {
       variant: "SidebarCard",
       structure: "card",
-      className: "w-full p-3 border border-subtle bg-default",
+      // [ceibafy] bg-default → bg-accent
+      className: "w-full p-3 border border-subtle bg-accent",
     },
     {
       variant: "SidebarCard",
@@ -166,7 +169,8 @@ export function Card({
     <div
       className={classNames(
         containerProps?.className,
-        "border-subtle text-default bg-default flex flex-col justify-between rounded-md border",
+        // [ceibafy] bg-default → bg-accent
+        "border-subtle text-default bg-accent flex flex-col justify-between rounded-md border",
         cvaCardTypeByVariant({ variant, structure: "card" })
       )}
       data-testid="card-container"

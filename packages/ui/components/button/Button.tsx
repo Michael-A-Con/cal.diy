@@ -54,7 +54,8 @@ export const buttonClasses = cva(
           "bg-brand-default",
           "text-brand",
           // Hover state
-          "not-disabled:hover:bg-brand-emphasis",
+          // [ceibafy] original: "not-disabled:hover:bg-brand-emphasis"
+          "not-disabled:hover:bg-brand-hover",
           // Focus state
           "focus-visible:outline-none",
           "focus-visible:ring-0",

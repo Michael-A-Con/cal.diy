@@ -60,7 +60,8 @@ export function SideBar({ bannersHeight, user }: SideBarProps) {
       <aside
         style={sidebarStylingAttributes}
         className={classNames(
-          "fixed left-0 hidden h-full w-14 flex-col overflow-y-auto overflow-x-hidden border-muted border-r bg-cal-muted md:sticky md:flex lg:w-56 lg:px-3",
+          // [ceibafy] bg-cal-muted → bg-warm
+          "fixed left-0 hidden h-full w-14 flex-col overflow-y-auto overflow-x-hidden border-muted border-r bg-warm md:sticky md:flex lg:w-56 lg:px-3",
           "max-h-screen"
         )}>
         <div className="flex h-full flex-col justify-between py-3 lg:pt-4">

@@ -97,7 +97,8 @@ export function WelcomeToCalcomModal() {
         <div className="bg-muted border-subtle flex shrink-0 items-center justify-between rounded-b-2xl border-t px-8 py-6">
           <Button
             color="minimal"
-            href="https://cal.diy"
+            // [ceibafy] "learn more" link points to looknbook domain
+            href="https://looknbook.app"
             target="_blank"
             EndIcon="external-link"
             className="pointer-events-none opacity-0">

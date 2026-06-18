@@ -51,6 +51,10 @@
   --color-brand-muted: var(--cal-brand-muted);
   --color-brand-subtle: var(--cal-brand-subtle, #9CA3AF);
   --color-brand-accent: var(--cal-brand-accent, white);
+  /* [ceibafy] looknbook palette utilities → bg-brand-hover, bg-accent, bg-warm */
+  --color-brand-hover: var(--cal-brand-hover);
+  --color-accent: var(--cal-bg-accent);
+  --color-warm: var(--cal-bg-warm);
   --color-semantic-info-subtle: var(--cal-bg-semantic-info-subtle);
   --color-semantic-info-emphasis: var(--cal-bg-semantic-info-emphasis);
   --color-semantic-success-subtle: var(--cal-bg-semantic-success-subtle);
@@ -329,7 +333,11 @@
   --cal-text-error: hsla(0, 63%, 31%, 1);
 
   /* Brand */
-  --cal-brand: hsla(221, 39%, 11%, 1);
+  /* [ceibafy] original: --cal-brand: hsla(221, 39%, 11%, 1); */
+  --cal-brand: #9ab17a; /* [ceibafy] primary green (light) */
+  --cal-brand-hover: #c3cc9b; /* [ceibafy] lighter green hover (light) */
+  --cal-bg-accent: #e4dfb5; /* [ceibafy] subtle fills (light) */
+  --cal-bg-warm: #fbe8ce; /* [ceibafy] warm backgrounds (light) */
   --cal-brand-emphasis: hsla(0, 0%, 6%, 1);
   --cal-brand-text: hsla(0, 0%, 100%, 1);
 
@@ -453,7 +461,11 @@
   --cal-text-error: hsla(3, 66%, 93%, 1);
 
   /* Brand */
-  --cal-brand: hsla(0, 0%, 100%, 1);
+  /* [ceibafy] original: --cal-brand: hsla(0, 0%, 100%, 1); */
+  --cal-brand: #9ab17a; /* [ceibafy] primary green (dark — still readable) */
+  --cal-brand-hover: #c3cc9b; /* [ceibafy] lighter green hover (dark) */
+  --cal-bg-accent: #2d3b22; /* [ceibafy] deep forest green fills (dark) */
+  --cal-bg-warm: #1e2a18; /* [ceibafy] very dark green backgrounds (dark) */
   --cal-brand-emphasis: hsla(218, 11%, 65%, 1);
   --cal-brand-text: hsla(0, 0%, 0%, 1);
 

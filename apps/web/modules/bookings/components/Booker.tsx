@@ -1,6 +1,7 @@
 import process from "node:process";
 import BookingPageTagManager from "@calcom/app-store/BookingPageTagManager";
-import { useIsPlatformBookerEmbed } from "@calcom/atoms/hooks/useIsPlatformBookerEmbed";
+// [ceibafy] unused after branding removal
+// import { useIsPlatformBookerEmbed } from "@calcom/atoms/hooks/useIsPlatformBookerEmbed";
 import dayjs from "@calcom/dayjs";
 import { useEmbedUiConfig } from "@calcom/embed-core/embed-iframe";
 import { updateEmbedBookerState } from "@calcom/embed-core/src/embed-iframe";
@@ -55,7 +56,8 @@ import { VerifyCodeDialog } from "./VerifyCodeDialog";
 const BookerComponent = ({
   username,
   eventSlug,
-  hideBranding = false,
+  // [ceibafy] hideBranding unused after branding removal
+  // hideBranding = false,
   entity,
   onOverlayClickNoCalendar,
   onClickOverlayContinue,
@@ -89,7 +91,8 @@ const BookerComponent = ({
   showNoAvailabilityDialog,
 }: BookerProps & WrappedBookerProps): JSX.Element | null => {
   const searchParams = useCompatSearchParams();
-  const isPlatformBookerEmbed = useIsPlatformBookerEmbed();
+  // [ceibafy] unused after branding removal
+  // const isPlatformBookerEmbed = useIsPlatformBookerEmbed();
   const [bookerState, setBookerState] = useBookerStoreContext(
     (state) => [state.state, state.setState],
     shallow
@@ -104,7 +107,8 @@ const BookerComponent = ({
 
   const {
     shouldShowFormInDialog,
-    hasDarkBackground,
+    // [ceibafy] hasDarkBackground unused after branding removal
+    // hasDarkBackground,
     extraDays,
     columnViewExtraDays,
     isMobile,
@@ -552,6 +556,7 @@ const BookerComponent = ({
           </div>
         )}
 
+        {/* [ceibafy] Powered-by branding on public booking page removed (clean removal, no replacement)
         {!hideBranding && (!isPlatform || isPlatformBookerEmbed) && !shouldRenderCaptcha && (
           <m.span
             key="logo"
@@ -562,7 +567,7 @@ const BookerComponent = ({
             )}>
             {null}
           </m.span>
-        )}
+        )} */}
       </div>
       <>
         {verifyCode && formEmail ? (

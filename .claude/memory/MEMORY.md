@@ -1,3 +1,3 @@
 # Memory Index
 
-- [Project: Ceibafy fork](project-ceibafy.md) — cal.diy fork named Ceibafy; feature removal preferences
+- [Project: looknbook fork](project-looknbook.md) — cal.diy fork named looknbook (looknbook.app); feature removal preferences
