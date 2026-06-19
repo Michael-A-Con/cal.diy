@@ -50,7 +50,7 @@ export function detectDuplicates(customers: CustomerIdentity[]): Map<string, Dup
 
       const keyTypes = new Set<CustomerKeyType>();
       const phonesUnion = new Set<string>();
-      for (const k of keys) {
+      for (const k of Array.from(keys)) {
         if (k !== c.key) possible.add(k);
         const meta = keyToMeta.get(k);
         if (!meta) continue;
@@ -68,7 +68,7 @@ export function detectDuplicates(customers: CustomerIdentity[]): Map<string, Dup
       if (!keys || keys.size <= 1) continue;
 
       const emailsUnion = new Set<string>();
-      for (const k of keys) {
+      for (const k of Array.from(keys)) {
         if (k !== c.key) possible.add(k);
         const meta = keyToMeta.get(k);
         if (!meta) continue;

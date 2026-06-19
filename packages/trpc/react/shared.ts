@@ -12,6 +12,8 @@ export const ENDPOINTS = [
   "calendars",
   "calVideo",
   "credentials",
+  // [looknbook] customers (history & loyalty) endpoint — must match the viewer.customers sub-router
+  "customers",
   "deploymentSetup",
   "eventTypes",
   "eventTypesHeavy",

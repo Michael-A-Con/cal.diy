@@ -9,8 +9,9 @@ const initialConstants = {
   PUBLIC_INVALIDATE_AVAILABLE_SLOTS_ON_BOOKING_FORM: true,
   CLOUDFLARE_SITE_ID: "test-site-id",
   CLOUDFLARE_USE_TURNSTILE_IN_BOOKER: "1",
-  DEFAULT_LIGHT_BRAND_COLOR: "#292929",
-  DEFAULT_DARK_BRAND_COLOR: "#fafafa",
+  // [looknbook] keep in sync with constants.ts brand colors (literal types must match)
+  DEFAULT_LIGHT_BRAND_COLOR: "#9AB17A",
+  DEFAULT_DARK_BRAND_COLOR: "#C3CC9B",
   CALCOM_VERSION: "0.0.0",
   IS_SELF_HOSTED: false,
   SEO_IMG_DEFAULT: "https://cal.com/og-image.png",

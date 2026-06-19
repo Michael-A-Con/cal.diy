@@ -24,6 +24,13 @@ const getNavigationItems = (): NavigationItemType[] => [
     badge: <UnconfirmedBookingBadge />,
     isCurrent: ({ pathname }) => pathname?.startsWith("/bookings") ?? false,
   },
+  // [looknbook] Customers (history & loyalty) tab
+  {
+    name: "customers",
+    href: "/customers",
+    icon: "users",
+    isCurrent: ({ pathname }) => pathname?.startsWith("/customers") ?? false,
+  },
   {
     name: "availability",
     href: "/availability",
