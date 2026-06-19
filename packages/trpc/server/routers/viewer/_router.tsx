@@ -10,6 +10,8 @@ import { authRouter } from "./auth/_router";
 import { availabilityRouter } from "./availability/_router";
 import { bookingsRouter } from "./bookings/_router";
 import { calendarsRouter } from "./calendars/_router";
+// [looknbook] customers (history & loyalty) router
+import { customersRouter } from "./customers/_router";
 import { calVideoRouter } from "./calVideo/_router";
 import { credentialsRouter } from "./credentials/_router";
 import { deploymentSetupRouter } from "./deploymentSetup/_router";
@@ -35,6 +37,8 @@ export const viewerRouter = router({
   auth: authRouter,
   deploymentSetup: deploymentSetupRouter,
   bookings: bookingsRouter,
+  // [looknbook] customer history & loyalty
+  customers: customersRouter,
   calendars: calendarsRouter,
   calVideo: calVideoRouter,
   credentials: credentialsRouter,
