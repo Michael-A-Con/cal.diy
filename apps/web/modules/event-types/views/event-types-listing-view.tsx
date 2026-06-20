@@ -36,10 +36,11 @@ import { HorizontalTabs } from "@calcom/ui/components/navigation";
 import { Skeleton } from "@calcom/ui/components/skeleton";
 import { showToast } from "@calcom/ui/components/toast";
 import { Tooltip } from "@calcom/ui/components/tooltip";
-import {
-  EventTypeEmbedButton,
-  EventTypeEmbedDialog,
-} from "@calcom/web/modules/embed/components/EventTypeEmbed";
+// [looknbook] Embed feature removed (embed-react dep dropped for Vercel build) — uncomment to restore
+// import {
+//   EventTypeEmbedButton,
+//   EventTypeEmbedDialog,
+// } from "@calcom/web/modules/embed/components/EventTypeEmbed";
 import { EventTypeDescription } from "@calcom/web/modules/event-types/components";
 import {
   CreateEventTypeDialog,
@@ -702,7 +703,8 @@ export const InfiniteEventTypeList = ({
                                     </DropdownItem>
                                   </DropdownMenuItem>
                                 )}
-                                {!isManagedEventType && (
+                                {/* [looknbook] Embed menu item removed (embed feature gone) — uncomment to restore */}
+                                {/* {!isManagedEventType && (
                                   <DropdownMenuItem className="outline-none">
                                     <EventTypeEmbedButton
                                       namespace={type.slug}
@@ -715,7 +717,7 @@ export const InfiniteEventTypeList = ({
                                       {t("embed")}
                                     </EventTypeEmbedButton>
                                   </DropdownMenuItem>
-                                )}
+                                )} */}
                                 {/* readonly is only set when we are on a team - if we are on a user event type null will be the value. */}
                                 {!readOnly && !isChildrenManagedEventType && (
                                   <>
@@ -988,7 +990,8 @@ const InfiniteScrollMain = ({
       {eventTypeGroups.length > 1 && <HorizontalTabs tabs={tabs} />}
       {eventTypeGroups.length >= 1 && <InfiniteTeamsTab activeEventTypeGroup={activeEventTypeGroup[0]} />}
       {eventTypeGroups.length === 0 && <CreateFirstEventTypeView slug={profiles[0].slug ?? ""} />}
-      <EventTypeEmbedDialog />
+      {/* [looknbook] Embed dialog removed (embed feature gone) — uncomment to restore */}
+      {/* <EventTypeEmbedDialog /> */}
       {searchParams?.get("dialog") === "duplicate" && <DuplicateDialog />}
     </>
   );

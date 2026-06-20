@@ -20,10 +20,11 @@ import { HorizontalTabs, VerticalTabs } from "@calcom/ui/components/navigation";
 import { Skeleton } from "@calcom/ui/components/skeleton";
 import { showToast } from "@calcom/ui/components/toast";
 import { Tooltip } from "@calcom/ui/components/tooltip";
-import {
-  EventTypeEmbedButton,
-  EventTypeEmbedDialog,
-} from "@calcom/web/modules/embed/components/EventTypeEmbed";
+// [looknbook] Embed feature removed (embed-react dep dropped for Vercel build) — uncomment to restore
+// import {
+//   EventTypeEmbedButton,
+//   EventTypeEmbedDialog,
+// } from "@calcom/web/modules/embed/components/EventTypeEmbed";
 import WebShell from "@calcom/web/modules/shell/Shell";
 import { LoaderIcon } from "@coss/ui/icons";
 import { Suspense, useMemo, useState } from "react";
@@ -86,9 +87,10 @@ function EventTypeSingleLayout({
     team ? `${!team.parentId ? "team/" : ""}${team.slug}` : formMethods.getValues("users")[0].username
   }/${eventType.slug}`;
 
-  const embedLink = `${
-    team ? `team/${team.slug}` : formMethods.getValues("users")[0].username
-  }/${formMethods.getValues("slug")}`;
+  // [looknbook] embedLink unused after embed feature removal — uncomment with the embed button
+  // const embedLink = `${
+  //   team ? `team/${team.slug}` : formMethods.getValues("users")[0].username
+  // }/${formMethods.getValues("slug")}`;
   const isManagedEvent = formMethods.getValues("schedulingType") === SchedulingType.MANAGED ? "_managed" : "";
 
   const [Shell] = useMemo(() => {
@@ -183,7 +185,8 @@ function EventTypeSingleLayout({
                     }}
                   />
                 )}
-                {!isPlatform && (
+                {/* [looknbook] Embed button removed (embed feature gone) — uncomment to restore */}
+                {/* {!isPlatform && (
                   <EventTypeEmbedButton
                     embedUrl={encodeURIComponent(embedLink)}
                     StartIcon="code"
@@ -195,7 +198,7 @@ function EventTypeSingleLayout({
                     tooltipOffset={4}
                     eventId={formMethods.getValues("id")}
                   />
-                )}
+                )} */}
               </>
             )}
             {!isChildrenManagedEventType && allowDelete && (
@@ -323,7 +326,8 @@ function EventTypeSingleLayout({
         isDeleting={isDeleting}
       />
 
-      {!isPlatform && <EventTypeEmbedDialog />}
+      {/* [looknbook] Embed dialog removed (embed feature gone) — uncomment to restore */}
+      {/* {!isPlatform && <EventTypeEmbedDialog />} */}
     </Shell>
   );
 }
