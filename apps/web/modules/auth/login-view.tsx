@@ -1,5 +1,6 @@
 "use client";
 
+import process from "node:process";
 import { ErrorCode } from "@calcom/features/auth/lib/ErrorCode";
 import { HOSTED_CAL_FEATURES, WEBAPP_URL, WEBSITE_URL } from "@calcom/lib/constants";
 import { emailRegex } from "@calcom/lib/emailSchema";
@@ -36,13 +37,9 @@ interface LoginValues {
   csrfToken: string;
 }
 
-const MicrosoftIcon = () => (
-  <img className="size-4" src="/microsoft-logo.svg" alt="" />
-);
+const MicrosoftIcon = () => <img className="size-4" src="/microsoft-logo.svg" alt="" />;
 
-const GoogleIcon = () => (
-  <img className="size-4" src="/google-icon-colored.svg" alt="" />
-);
+const GoogleIcon = () => <img className="size-4" src="/google-icon-colored.svg" alt="" />;
 
 function BackgroundGrid() {
   const rows = 9;
@@ -136,6 +133,8 @@ export default function Login({
     [ErrorCode.IncorrectTwoFactorCode]: `${t("incorrect_2fa_code")} ${t("please_try_again")}`,
     [ErrorCode.InternalServerError]: `${t("something_went_wrong")} ${t("please_try_again_and_contact_us")}`,
     [ErrorCode.ThirdPartyIdentityProviderEnabled]: t("account_created_with_identity_provider"),
+    // [looknbook] Show a clear suspension message instead of the generic "something went wrong"
+    [ErrorCode.UserAccountLocked]: t("account_suspended"),
   };
 
   let callbackUrl = searchParams?.get("callbackUrl") || "";
@@ -322,11 +321,7 @@ export default function Login({
 
               {/* Submit Button */}
               {/* [ceibafy] variant="outline" → color="primary" for green brand button */}
-              <Button
-                type="submit"
-                color="primary"
-                className="mt-8 w-full"
-                disabled={formState.isSubmitting}>
+              <Button type="submit" color="primary" className="mt-8 w-full" disabled={formState.isSubmitting}>
                 {twoFactorRequired ? t("submit") : t("continue")}
               </Button>
             </form>

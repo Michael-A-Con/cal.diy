@@ -1363,6 +1363,7 @@
   "meet_people_with_the_same_tokens": "Meet people with the same tokens",
   "only_book_people_and_allow": "Only book and allow bookings from people who share the same tokens, DAOs, or NFTs.",
   "account_created_with_identity_provider": "Your account was created using an Identity Provider.",
+  "account_suspended": "Your account has been suspended. Please contact us at help@looknbook.app to reactivate your account.",
   "account_managed_by_identity_provider": "Your account is managed by {{provider}}",
   "account_managed_by_identity_provider_description": "To change your email, password, enable two-factor authentication and more, please visit your {{provider}} account settings.",
   "account_managed_by_identity_provider_error": "Your account is managed by different identity provider. Try logging in with {{provider}}.",
