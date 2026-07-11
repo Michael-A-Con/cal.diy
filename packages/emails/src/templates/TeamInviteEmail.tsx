@@ -1,10 +1,8 @@
-import type { TFunction } from "i18next";
-
 import ServerTrans from "@calcom/lib/components/ServerTrans";
-import { APP_NAME, WEBAPP_URL, IS_PRODUCTION } from "@calcom/lib/constants";
-
+import { APP_NAME, IS_PRODUCTION, WEBAPP_URL } from "@calcom/lib/constants";
+import type { TFunction } from "i18next";
 import { getSubject, getTypeOfInvite } from "../../lib/utils/team-invite-utils";
-import { V2BaseEmailHtml, CallToAction } from "../components";
+import { CallToAction, V2BaseEmailHtml } from "../components";
 
 type TeamInvite = {
   language: TFunction;
@@ -97,8 +95,8 @@ export const TeamInviteEmail = (
       <div style={{ borderTop: "1px solid #E1E1E1", marginTop: "32px", paddingTop: "32px" }}>
         <p style={{ fontWeight: 400, margin: 0 }}>
           <>
-            {props.language("have_any_questions")}{" "}
-            <a href="mailto:support@cal.com" style={{ color: "#3E3E3E" }} target="_blank" rel="noreferrer">
+            {props.language("have_any_questions")} {/* [looknbook] support@cal.com → help@looknbook.app */}
+            <a href="mailto:help@looknbook.app" style={{ color: "#3E3E3E" }} target="_blank" rel="noreferrer">
               <>{props.language("contact")}</>
             </a>{" "}
             {props.language("our_support_team")}

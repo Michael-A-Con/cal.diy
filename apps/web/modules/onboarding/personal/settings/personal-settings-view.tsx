@@ -119,14 +119,15 @@ export const PersonalSettingsView = ({
           subtitle={t("personal_details_subtitle")}
           footer={
             <div className="flex w-full items-center justify-end gap-4">
-              {!fromTeamOnboarding && (
+              {/* [looknbook] Back button removed — the plan-selection screen it returned to is skipped. */}
+              {/* {!fromTeamOnboarding && (
                 <Button
                   color="minimal"
                   className="rounded-[10px]"
                   onClick={() => router.push("/onboarding/getting-started")}>
                   {t("back")}
                 </Button>
-              )}
+              )} */}
               <Button
                 type="submit"
                 form="personal-settings-form"

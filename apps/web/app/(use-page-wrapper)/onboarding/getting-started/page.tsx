@@ -6,7 +6,9 @@ import { _generateMetadata } from "app/_utils";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { OnboardingView } from "~/onboarding/getting-started/onboarding-view";
+// [looknbook] Plan-selection screen skipped — every business is a single "personal" account.
+// To restore the plan picker, uncomment the import below and the <OnboardingView> render.
+// import { OnboardingView } from "~/onboarding/getting-started/onboarding-view";
 
 export const generateMetadata = async () => {
   return await _generateMetadata(
@@ -34,9 +36,10 @@ const ServerPage = async () => {
     return redirect("/onboarding/personal/settings");
   }
 
-  const userEmail = session.user.email || "";
-
-  return <OnboardingView userEmail={userEmail} />;
+  // [looknbook] Skip the plan-selection step and go straight to personal onboarding.
+  // The onboarding store defaults selectedPlan to "personal" and the personal flow
+  // never reads selectedPlan, so this is a safe, direct passthrough.
+  return redirect("/onboarding/personal/settings");
 };
 
 export default ServerPage;
