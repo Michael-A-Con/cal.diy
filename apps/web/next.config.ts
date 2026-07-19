@@ -1,9 +1,10 @@
+import process from "node:process";
+import i18nConfig from "@calcom/i18n/next-i18next.config";
 import { withBotId } from "botid/next/config";
 import { config as dotenvConfig } from "dotenv";
 import type { NextConfig } from "next";
 import type { RouteHas } from "next/dist/lib/load-custom-routes";
 import { withAxiom } from "next-axiom";
-import i18nConfig from "@calcom/i18n/next-i18next.config";
 import packageJson from "./package.json";
 import {
   nextJsOrgRewriteConfig,
@@ -593,8 +594,20 @@ const nextConfig = (phase: string): NextConfig => {
                 destination: "/event-types",
                 permanent: false,
               },
+              // [looknbook] Google Calendar connect flow must pass through — do NOT redirect it.
+              // Next.js redirects can't "allow-list" a path (a redirect always redirects), so the
+              // catch-all below excludes the calendar-flow prefixes via a negative lookahead instead
+              // of blanket-redirecting everything under /apps. Allowed (not redirected):
+              //   - categories/calendar   → "Add Calendar" app list (AddCalendarButton target)
+              //   - google-calendar(/…)   → Google Calendar app detail + install/setup pages
+              //   - installed(/…)         → connected calendars + OAuth callback returnTo
+              //                             (/apps/installed, /apps/installed/calendar,
+              //                              /apps/installed/conferencing)
+              // Everything else under /apps still redirects to /event-types.
+              // Note: the OAuth server routes live under /api/integrations/googlecalendar/* (not
+              // under /apps), so they were never caught by this rule.
               {
-                source: "/apps/:path*",
+                source: "/apps/:path((?!categories/calendar|google-calendar|installed).*)",
                 destination: "/event-types",
                 permanent: false,
               },
