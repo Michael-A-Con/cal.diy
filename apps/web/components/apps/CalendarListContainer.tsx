@@ -72,10 +72,18 @@ function CalendarList(props: Props): JSX.Element {
 
 const AddCalendarButton = (): JSX.Element => {
   const { t } = useLocale();
+  // [looknbook] Connect Google Calendar directly via OAuth instead of linking to the
+  // (removed) App Store page at /apps/categories/calendar. Google Calendar is our only
+  // calendar integration, so the type is hardcoded.
   return (
-    <Button color="secondary" StartIcon="plus" href="/apps/categories/calendar">
-      {t("add_calendar")}
-    </Button>
+    <InstallAppButton
+      type="google_calendar"
+      render={(buttonProps) => (
+        <Button color="secondary" StartIcon="plus" {...buttonProps}>
+          {t("connect_google_calendar")}
+        </Button>
+      )}
+    />
   );
 };
 
@@ -168,13 +176,16 @@ export function CalendarListContainer({
         })}
         description={t(`no_category_apps_description_calendar`)}
         buttonRaw={
-          <Button
-            EndIcon="external-link"
-            color="secondary"
-            data-testid="connect-calendar-apps"
-            href="/apps/categories/calendar">
-            {t("connect_your_first_calendar")}
-          </Button>
+          // [looknbook] Connect Google Calendar directly instead of linking to the removed App Store page.
+          <InstallAppButton
+            type="google_calendar"
+            render={(buttonProps) => (
+              <Button color="secondary" data-testid="connect-calendar-apps" {...buttonProps}>
+                {t("connect_google_calendar")}
+              </Button>
+            )}
+            onChanged={onChanged}
+          />
         }
       />
     );

@@ -1,5 +1,3 @@
-import type { FunctionComponent, SVGProps } from "react";
-
 import { InstallAppButton } from "@calcom/app-store/InstallAppButton";
 import { useLocale } from "@calcom/lib/hooks/useLocale";
 import { trpc } from "@calcom/trpc/react";
@@ -11,6 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@calcom/ui/components/dropdown";
+import type { FunctionComponent, SVGProps } from "react";
 
 interface AdditionalCalendarSelectorProps {
   isPending?: boolean;
@@ -44,9 +43,19 @@ const AdditionalCalendarSelector = ({ isPending }: AdditionalCalendarSelectorPro
         {options.map((data) => (
           <DropdownMenuItem key={data.slug} className="focus:outline-none">
             {data.slug === "add-new" ? (
-              <DropdownItem StartIcon="plus" color="minimal" href="/apps/categories/calendar">
-                {t("install_new_calendar_app")}
-              </DropdownItem>
+              // [looknbook] Connect Google Calendar directly via OAuth instead of linking to the
+              // (removed) App Store page. Google Calendar is our only calendar integration.
+              <InstallAppButton
+                type="google_calendar"
+                render={(installProps) => {
+                  const props = { ...installProps } as FunctionComponent<SVGProps<SVGSVGElement>>;
+                  return (
+                    <DropdownItem {...props} StartIcon="plus" color="minimal" type="button">
+                      {t("connect_google_calendar")}
+                    </DropdownItem>
+                  );
+                }}
+              />
             ) : (
               <InstallAppButton
                 type={data.type}

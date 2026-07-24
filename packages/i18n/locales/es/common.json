@@ -4578,6 +4578,7 @@
   "account_already_exists_please_login": "Ya existe una cuenta con este correo electrónico. Por favor, inicia sesión para aceptar la invitación.",
   "unverified_email_oauth_error": "Por favor, verifica tu dirección de correo electrónico antes de iniciar sesión con Google o SAML. Inicia sesión con tu contraseña para reenviar el correo de verificación.",
   "connect_your_first_calendar": "Conecta tu primer calendario",
+  "connect_google_calendar": "Conectar Google Calendar",
   "routing_that_grows_with_you": "Enrutamiento que crece contigo",
   "routing_forms_upgrade_description": "Crea formularios simples que guíen las reservas a la persona, equipo o evento correcto. Comienza solo y luego enruta reuniones sin problemas a medida que más personas o casos de uso entren en juego. Disponible en el plan Teams.",
   "pbac_resource_feature_opt_in": "Activación de funciones",
